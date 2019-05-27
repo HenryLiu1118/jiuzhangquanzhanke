@@ -1,4 +1,4 @@
-export interface CourseWithTNDto {
+export class CourseWithTNDto {
     courseName: string;
     courseLocation: string;
     courseContent: string;

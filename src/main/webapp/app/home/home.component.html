@@ -2,6 +2,65 @@
     <div class="col-md-12">
         <h1 class="display-8">欢迎来到九章全栈课程</h1>
 
+        <div *ngIf="isAuthenticated()">
+            <hr>
+            <span>课程查询</span>
+            <hr>
+            <div><span><button (click)="getAllCourses()">显示所有课程</button> <button (click)="clearAllCourses()">清除</button></span></div>
+
+            <div *ngFor="let course of courses" style="padding-bottom: 2px">
+                <div style="display: flex; width: 100%; height: 40px; justify-content: space-between; border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid">
+                    <div style="padding-left: 5px">{{course.courseName}}</div>
+                    <div>{{course.courseContent}}</div>
+                    <div>{{course.courseLocation}}</div>
+                    <div>{{course.teacherId}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isAuthenticated()">
+            <hr>
+            <span>删除课程</span>
+            <hr>
+            <div><span>课程名字: </span><input type = "text" [(ngModel)]= "classNameNeedToDel"> <button (click)="deleteChooseCourseWithCourseName()">删除课程</button></div>
+        </div>
+
+        <div class = "row">
+            <div class = "col-sm-6">
+                <div *ngIf="isAuthenticated()">
+                    <hr>
+                    <span>注册功能</span>
+                    <hr>
+                    <div><span>课程名字: </span><input type = "text" [(ngModel)]= "classNeedToReg.courseName"></div>
+                    <br>
+                    <div><span>课程内容: </span><input type = "text" [(ngModel)]= "classNeedToReg.courseContent"></div>
+                    <br>
+                    <div><span>课程地址: </span><input type = "text" [(ngModel)]= "classNeedToReg.courseLocation"></div>
+                    <br>
+                    <div><span>课程教授: </span><input type = "text" [(ngModel)]= "classNeedToReg.teacherId"></div>
+                    <br>
+
+                    <div><span><button (click)="addCourse()">注册课程</button> </span></div>
+                </div>
+            </div>
+            <div class = "col-sm-6">
+                <div *ngIf="isAuthenticated()">
+                    <hr>
+                    <span>更改课程</span>
+                    <hr>
+                    <div><span>课程名字: </span><input type = "text" [(ngModel)]= "classNeedToUpdate.courseName"></div>
+                    <br>
+                    <div><span>课程内容: </span><input type = "text" [(ngModel)]= "classNeedToUpdate.courseContent"></div>
+                    <br>
+                    <div><span>课程地址: </span><input type = "text" [(ngModel)]= "classNeedToUpdate.courseLocation"></div>
+                    <br>
+                    <div><span>课程教授: </span><input type = "text" [(ngModel)]="classNeedToUpdate.teacherId"></div>
+                    <br>
+                    <div><span><button (click)="updateChooseCourseWithCourseName()">更改课程</button> </span></div>
+                </div>
+            </div>
+        </div>
+
         <!--<div [ngSwitch]="isAuthenticated()">-->
             <!--<div class="alert alert-success" *ngSwitchCase="true">-->
                 <!--<span *ngIf="account"-->
@@ -23,6 +82,8 @@
             <!--<div>Course_Content</div>-->
             <!--<div>Teacher_ID</div>-->
         <!--</div>-->
+        <!--test-->
+        <!--
         <div *ngIf="isAuthenticated()">
             <hr>
             <span>课程查询/注册功能</span>
@@ -33,7 +94,7 @@
                     <div style="padding-left: 5px">{{course.courseName}}</div>
                     <div>{{course.courseLocation}}</div>
                     <div>{{course.courseContent}}</div>
-                    <div>{{course.courseTeacher}}</div>
+                    <div>{{course.teacherId}}</div>
                  </div>
             </div>
         </div>
@@ -42,7 +103,7 @@
             <hr>
             <span>课程查询</span>
             <hr>
-            <div><span><button (click)="getAllCoursesWithTN()">显示所有课程</button> <button (click)="clearAllCourses()">清除</button></span></div>
+            <div><span><button (click)="getAllCoursesWithTN()">显示所有课程</button> <button (click)="clearAllCoursesWithTN()">清除</button></span></div>
             <div *ngFor="let course of coursesWithTN" style="padding-bottom: 2px">
                 <div style="display: flex; width: 100%; height: 40px; justify-content: space-between; border-top: 1px solid; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid">
                     <div style="padding-left: 5px">{{course.courseName}}</div>
@@ -51,15 +112,25 @@
                     <div>{{course.teacherName}}</div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
+        <!--
         <div *ngIf="isAuthenticated()">
             <hr>
             <span>注册功能</span>
             <hr>
-            <div><input type = "test" [ngModel]= "classeNameNeedToReg"></div>
+            <div><span>课程名字: </span><input type = "text" [(ngModel)]= "classeNameNeedToReg"></div>
+            <br>
+            <div><span>课程内容: </span><input type = "text" [(ngModel)]= "classeContentNeedToReg"></div>
+            <br>
+            <div><span>课程地址: </span><input type = "text" [(ngModel)]= "classLocationNeedToReg"></div>
+            <br>
+            <div><span>课程教授: </span><input type = "text" [(ngModel)]= "classTeacherNeedToReg"></div>
+            <br>
+
             <div><span><button (click)="getAllCoursesWithTN()">注册课程</button> </span></div>
         </div>
+-->
 
     </div>
 </div>
