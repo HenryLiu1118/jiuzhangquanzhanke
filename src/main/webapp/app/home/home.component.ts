@@ -27,8 +27,7 @@ export class HomeComponent implements OnInit {
         private courseService: CourseService
     ) {}
 
-    courses: CourseDto[] = [];
-
+    //courses: CourseDto[] = [];
     coursesWithTN: CourseWithTNDto[] = [];
 
     ngOnInit() {
@@ -53,7 +52,7 @@ export class HomeComponent implements OnInit {
     login() {
         this.modalRef = this.loginModalService.open();
     }
-
+    /*
     getAllCourses() {
         this.courseService.getCourseInfo().subscribe(curDto => {
             if (!curDto) {
@@ -63,7 +62,7 @@ export class HomeComponent implements OnInit {
             }
         });
     }
-
+*/
     getAllCoursesWithTN() {
         this.courseService.getCourseInfoWithTN().subscribe(curDto => {
             if (!curDto) {
@@ -82,18 +81,45 @@ export class HomeComponent implements OnInit {
     deleteChooseCourseWithCourseName() {
         this.courseService.delete(this.classNameNeedToDel).subscribe();
         this.classNameNeedToDel = '';
+        this.clearAllCoursesWithTN();
     }
 
     addCourse() {
         this.courseService.addCourse(this.classNeedToReg).subscribe();
         this.classNeedToReg = new CourseDto();
     }
-
+    /*
     clearAllCourses() {
         this.courses = [];
     }
-
+*/
     clearAllCoursesWithTN() {
         this.coursesWithTN = [];
+    }
+
+    ClearUpdate() {
+        this.classNeedToUpdate = new CourseDto();
+    }
+
+    ClearPost() {
+        this.classNeedToReg = new CourseDto();
+    }
+
+    UpdateField() {
+        if (this.classNeedToUpdate.courseName.length > 2) {
+            for (let c of this.coursesWithTN) {
+                if (c.courseName == this.classNeedToUpdate.courseName) {
+                    this.UpdateNode(c);
+                    break;
+                }
+            }
+        }
+    }
+
+    UpdateNode(c) {
+        this.classNeedToUpdate.courseName = c.courseName;
+        this.classNeedToUpdate.courseContent = c.courseContent;
+        this.classNeedToUpdate.courseLocation = c.courseLocation;
+        this.classNeedToUpdate.teacherId = c.teacherId;
     }
 }

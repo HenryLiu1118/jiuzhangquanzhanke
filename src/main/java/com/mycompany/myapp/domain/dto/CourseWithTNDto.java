@@ -14,5 +14,7 @@ public class CourseWithTNDto {
 
     private String courseContent;
 
+    private long teacherId;
+
     private String teacherName;
 }
