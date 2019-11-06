@@ -35,7 +35,7 @@ public class CourseService {
         if (courseDtos.isEmpty()) {
             List<Course> courses = courseRepository.findAll();
             for (Course c : courses) {
-                courseDtos.add(new CourseDto(c.getCourseName(), c.getCourseLocation(), c.getCourseContent(), c.getTeacherId()));
+                courseDtos.add(new CourseDto(c.getId(), c.getCourseName(), c.getCourseLocation(), c.getCourseContent(), c.getTeacherId()));
             }
 
             return courseDtos;

@@ -8,6 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 public class CourseDto {
 
+    private long id;
+
     private String courseName;
 
     private String courseLocation;

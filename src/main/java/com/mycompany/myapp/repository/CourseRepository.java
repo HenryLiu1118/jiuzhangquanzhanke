@@ -17,10 +17,10 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
 //    @Query("SELECT Course FROM course c  WHERE c.name = :courseName")
 //    Course findCourseByCourseName(@Param("courseName") String courseName);
 
-    @Query("SELECT new com.mycompany.myapp.domain.dto.CourseDto(c.courseName, c.courseLocation, c.courseContent, c.teacherId) from Course c")
+    @Query("SELECT new com.mycompany.myapp.domain.dto.CourseDto(c.id, c.courseName, c.courseLocation, c.courseContent, c.teacherId) from Course c")
     List<CourseDto> findAllCoursesDto();
 
-    @Query("SELECT new com.mycompany.myapp.domain.dto.CourseWithTNDto(c.courseName, c.courseLocation, c.courseContent, c.teacherId, u.login) from Course c left join User u on c.teacherId = u.id")
+    @Query("SELECT new com.mycompany.myapp.domain.dto.CourseWithTNDto(c.id, c.courseName, c.courseLocation, c.courseContent, c.teacherId, u.login) from Course c left join User u on c.teacherId = u.id")
     List<CourseWithTNDto> findAllCoursesDtoWithTeacherName();
 
     Optional<Course> findCourseByCourseName(String courseName);

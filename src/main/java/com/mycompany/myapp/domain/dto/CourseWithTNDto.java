@@ -8,6 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 public class CourseWithTNDto {
 
+    private long id;
+
     private String courseName;
 
     private String courseLocation;
